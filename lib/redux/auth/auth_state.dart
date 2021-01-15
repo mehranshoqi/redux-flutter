@@ -35,7 +35,7 @@ class AuthState {
 
   factory AuthState.initial() {
     return new AuthState(
-      uid: '',
+      uid: null,
       email: '',
       password: '',
       loadingStatus: LoadingStatus.success,

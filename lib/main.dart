@@ -6,6 +6,7 @@ import 'package:bbloginredux/screen/auth/signup.dart';
 import 'package:bbloginredux/screen/auth/login.dart';
 import 'package:bbloginredux/screen/auth/auth_page.dart';
 import 'package:bbloginredux/screen/products_page.dart';
+import 'package:bbloginredux/screen/home_screen.dart';
 import 'package:bbloginredux/screen/cart_page.dart';
 import 'package:redux/redux.dart';
 import 'package:bbloginredux/redux/app_state.dart';
@@ -25,7 +26,6 @@ class _AppState extends State<App> {
   bool _initialized = false;
   bool _error = false;
 
-  // Define an async function to initialize FlutterFire
   void initializeFlutterFire() async {
     try {
       // Wait for Firebase to initialize and set `_initialized` state to true
@@ -67,6 +67,7 @@ class _AppState extends State<App> {
           accentColor: Colors.yellow,
         ),
         routes: {
+          Routes.home: (context) => HomeScreen(),
           Routes.login: (context) => LoginPage(),
           Routes.signup: (context) => SignupPage(),
           Routes.productsView: (context) => ProductsPage(),

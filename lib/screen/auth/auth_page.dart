@@ -146,16 +146,14 @@ class _AuthPageState extends State<AuthPage> {
                         ),
                         MaterialButton(
                           onPressed: () async {
-                            var uid = await _auth.signInAnonymously();
-                            if (uid == null) {
+                            var user = await _auth.signInAnonymously();
+                            if (user == null) {
                               return null;
                             } else {
                               StoreProvider.of<AppState>(context).dispatch(
-                                AnymousSigninAction(uid),
+                                AnymousSigninAction(user),
                               );
-                              Navigator.of(context).pushNamed(
-                                Routes.home,
-                              );
+                              Navigator.of(context).pushNamed(Routes.home);
                             }
                           },
                           child: Text(
