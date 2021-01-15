@@ -157,7 +157,7 @@ class _AuthPageState extends State<AuthPage> {
                                 Navigator.of(context).push(
                                   PageRouteBuilder(
                                     transitionDuration:
-                                        Duration(milliseconds: 1200),
+                                        Duration(milliseconds: 900),
                                     transitionsBuilder: (
                                       BuildContext context,
                                       Animation<double> animation,

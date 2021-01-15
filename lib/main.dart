@@ -63,8 +63,9 @@ class _AppState extends State<App> {
         debugShowCheckedModeBanner: false,
         home: AuthPage(),
         theme: ThemeData(
-          primaryColor: Color(0xFF3EBACE),
-          accentColor: Color(0xFFD8ECF1),
+          primaryColor: Color(0xFF0FFF99),
+          accentColor: Color(0xFF63D7B4),
+          backgroundColor: Color(0xFF1E1E24),
         ),
         routes: {
           Routes.home: (context) => HomeScreen(),
