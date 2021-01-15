@@ -1,11 +1,12 @@
+import 'package:bbloginredux/model/auth/user_model.dart';
 import 'package:bbloginredux/redux/app_state.dart';
 import 'package:bbloginredux/redux/auth/auth_action.dart';
 import 'package:flutter/material.dart';
+import 'package:bbloginredux/model/loading_status.dart';
 import 'package:bbloginredux/animation/FadeAnimation.dart';
 import 'package:bbloginredux/route/routes.dart';
 import 'package:bbloginredux/services/auth.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 
 class AuthPage extends StatefulWidget {
   @override
@@ -13,7 +14,8 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  // final AuthServices _auth = AuthServices();
+  final UserModel _userModel = new UserModel();
+  final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, AppState>(
@@ -143,21 +145,19 @@ class _AuthPageState extends State<AuthPage> {
                           height: 8,
                         ),
                         MaterialButton(
-                          onPressed: () =>
-                              {StoreProvider.of<AppState>(context).dispatch(
-                            AnymousSigninAction(),
-                          ),
-                          print('inja'),
+                          onPressed: () async {
+                            var uid = await _auth.signInAnonymously();
+                            if (uid == null) {
+                              return null;
+                            } else {
+                              StoreProvider.of<AppState>(context).dispatch(
+                                AnymousSigninAction(uid),
+                              );
+                              Navigator.of(context).pushNamed(
+                                Routes.home,
+                              );
+                            }
                           },
-                          // onPressed: () async {
-                          //   dynamic res = _auth.signInAnonymously();
-                          //   if (res == null) {
-                          //     print('RESPONSE IS NULL!');
-                          //   } else {
-                          //     print('Signed in :D');
-                          //     print(res);
-                          //   }
-                          // },
                           child: Text(
                             'continue as Guest >',
                             style: TextStyle(

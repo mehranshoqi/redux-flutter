@@ -19,12 +19,12 @@ class AuthServices {
       return null;
     }
   }
-
+``
   Future signInAnonymously() async {
     try {
       dynamic res = await _auth.signInAnonymously();
-      dynamic user = res.user;
-      return user;
+      dynamic uid = res.user.id;
+      return uid;
     } catch (err) {
       print(err.toString());
       return null;
