@@ -1,8 +1,7 @@
-import 'package:bbloginredux/model/auth/user_model.dart';
 import 'package:bbloginredux/redux/app_state.dart';
 import 'package:bbloginredux/redux/auth/auth_action.dart';
+import 'package:bbloginredux/screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:bbloginredux/model/loading_status.dart';
 import 'package:bbloginredux/animation/FadeAnimation.dart';
 import 'package:bbloginredux/route/routes.dart';
 import 'package:bbloginredux/services/auth.dart';
@@ -14,7 +13,6 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final UserModel _userModel = new UserModel();
   final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
@@ -144,23 +142,50 @@ class _AuthPageState extends State<AuthPage> {
                         SizedBox(
                           height: 8,
                         ),
-                        MaterialButton(
-                          onPressed: () async {
-                            var user = await _auth.signInAnonymously();
-                            if (user == null) {
-                              return null;
-                            } else {
-                              StoreProvider.of<AppState>(context).dispatch(
-                                AnymousSigninAction(user),
-                              );
-                              Navigator.of(context).pushNamed(Routes.home);
-                            }
-                          },
-                          child: Text(
-                            'continue as Guest >',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
+                        FadeAnimation(
+                          2,
+                          MaterialButton(
+                            onPressed: () async {
+                              var user = await _auth.signInAnonymously();
+                              if (user == null) {
+                                return null;
+                              } else {
+                                print(user);
+                                StoreProvider.of<AppState>(context).dispatch(
+                                  AnymousSigninAction(user),
+                                );
+                                Navigator.of(context).push(
+                                  PageRouteBuilder(
+                                    transitionDuration:
+                                        Duration(milliseconds: 1200),
+                                    transitionsBuilder: (
+                                      BuildContext context,
+                                      Animation<double> animation,
+                                      Animation<double> secondaryAnimation,
+                                      Widget child,
+                                    ) {
+                                      return FadeTransition(
+                                        opacity: animation,
+                                        child: child,
+                                      );
+                                    },
+                                    pageBuilder: (
+                                      BuildContext context,
+                                      Animation<double> animation,
+                                      Animation<double> secondaryAnimation,
+                                    ) {
+                                      return HomeScreen();
+                                    },
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              'continue as Guest',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
                         ),
