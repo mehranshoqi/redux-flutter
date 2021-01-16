@@ -65,7 +65,7 @@ class _AppState extends State<App> {
         theme: ThemeData(
           primaryColor: Color(0xFF0FFF99),
           accentColor: Color(0xFF63D7B4),
-          backgroundColor: Color(0xFF1E1E24),
+          backgroundColor: Color(0xFF222E3C),
         ),
         routes: {
           Routes.home: (context) => HomeScreen(),

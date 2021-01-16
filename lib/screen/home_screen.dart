@@ -2,6 +2,7 @@ import 'package:bbloginredux/redux/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:bbloginredux/widget/destination_carousel.dart';
 import 'package:bbloginredux/widget/hotel_carousel.dart';
+import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     [FontAwesomeIcons.heart, 'favorite'],
   ];
 
-  Widget _buildIcon(int index, String label) {
+  Widget _buildIcon(IconData _icon, String label) {
     return Column(
       children: <Widget>[
         Container(
@@ -31,13 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: BorderRadius.circular(30.0),
           ),
           child: Icon(
-            _category[index],
+            _icon,
             size: 25.0,
             color: Theme.of(context).accentColor,
           ),
         ),
         SizedBox(
-          height: 4,
+          height: 8,
         ),
         Text(label),
       ],
@@ -52,42 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           body: SafeArea(
-            // child: ListView(
-            //   padding: EdgeInsets.symmetric(
-            //     vertical: 30.0,
-            //   ),
-            //   children: <Widget>[
-            //     Padding(
-            //       padding: EdgeInsets.only(
-            //         left: 20.0,
-            //         right: 120.0,
-            //       ),
-            //       child: Text(
-            //         'What would you like to find?',
-            //         style: TextStyle(
-            //           fontSize: 30.0,
-            //           fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            //     ),
-            //     SizedBox(height: 20.0),
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //       children: _icons
-            //           .asMap()
-            //           .entries
-            //           .map(
-            //             (MapEntry map) => _buildIcon(map.key),
-            //           )
-            //           .toList(),
-            //     ),
-            //     SizedBox(height: 20.0),
-            //     DestinationCarousel(),
-            //     SizedBox(height: 20.0
-            //     ),
-            //     HotelCarousel(),
-            //   ],
-            // ),
             child: Column(
               children: <Widget>[
                 Container(
@@ -170,58 +135,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 26,
-                ),
+                SizedBox(height: 26),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                   decoration: BoxDecoration(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[]
-                    // _category
-                    //     .asMap()
-                    //     .entries
-                    //     .map(
-                    //       (MapEntry map) => _buildIcon(map.key),
-                    //     )
-                    //     .toList(),
+                    children: <Widget>[
+                      // IconButton(icon: ImageIcon(AssetImage('assets/background.png')), onPressed: null),
+                      _buildIcon(
+                        MyFlutterApp.music,
+                        'Songs',
+                      ),
+                      _buildIcon(
+                        Icons.ac_unit_outlined,
+                        'label',
+                      ),
+                      _buildIcon(
+                        Icons.ac_unit_outlined,
+                        'label',
+                      ),
+                      _buildIcon(
+                        Icons.ac_unit_outlined,
+                        'label',
+                      ),
+                    ],
                   ),
                 )
               ],
             ),
           ),
-          // bottomNavigationBar: BottomNavigationBar(
-          //   currentIndex: _currentTab,
-          //   onTap: (int value) {
-          //     setState(() {
-          //       _currentTab = value;
-          //     });
-          //   },
-          //   items: [
-          //     BottomNavigationBarItem(
-          //       icon: Icon(
-          //         Icons.search,
-          //         size: 30.0,
-          //       ),
-          //       title: SizedBox.shrink(),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       icon: Icon(
-          //         Icons.local_pizza,
-          //         size: 30.0,
-          //       ),
-          //       title: SizedBox.shrink(),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       icon: Icon(
-          //         Icons.people_alt_rounded,
-          //         size: 30,
-          //       ),
-          //       title: SizedBox.shrink(),
-          //     )
-          //   ],
-          // ),
         );
       },
     );
