@@ -1,6 +1,6 @@
 import 'package:bbloginredux/redux/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:bbloginredux/widget/destination_carousel.dart';
+import 'package:bbloginredux/widget/playlist_carousel.dart';
 import 'package:bbloginredux/widget/hotel_carousel.dart';
 import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -38,9 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         SizedBox(
-          height: 8,
+          height: 12,
         ),
-        Text(label),
+        Text(
+          label,
+          style: Theme.of(context).textTheme.subhead,
+        ),
       ],
     );
   }
@@ -52,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          body: SafeArea(
+          body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Container(
@@ -145,23 +148,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       // IconButton(icon: ImageIcon(AssetImage('assets/background.png')), onPressed: null),
                       _buildIcon(
                         MyFlutterApp.music,
-                        'Songs',
+                        'songs',
                       ),
                       _buildIcon(
-                        Icons.ac_unit_outlined,
-                        'label',
+                        MyFlutterApp.most_played,
+                        'most played',
                       ),
                       _buildIcon(
-                        Icons.ac_unit_outlined,
-                        'label',
+                        MyFlutterApp.last_added,
+                        'last added',
                       ),
                       _buildIcon(
-                        Icons.ac_unit_outlined,
-                        'label',
+                        MyFlutterApp.shuffle,
+                        'shuffle',
                       ),
                     ],
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 28,
+                ),
+                PlayListCarousel(),
+                // SizedBox(height: 8,),
+                // PlayListCarousel(),
               ],
             ),
           ),

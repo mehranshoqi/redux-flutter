@@ -66,6 +66,19 @@ class _AppState extends State<App> {
           primaryColor: Color(0xFF0FFF99),
           accentColor: Color(0xFF63D7B4),
           backgroundColor: Color(0xFF222E3C),
+          textTheme: ThemeData.light().textTheme.copyWith(
+              body1: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              body2: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              title: TextStyle(color: Color(0xFF63D7B4),fontWeight: FontWeight.w900,letterSpacing: .7),
+              subhead: TextStyle(
+                fontSize: 14.2,
+                color: Color(0x9FB9E6FF),
+                fontWeight: FontWeight.w400,
+              )),
         ),
         routes: {
           Routes.home: (context) => HomeScreen(),

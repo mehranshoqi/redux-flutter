@@ -6,9 +6,20 @@
 /// following in your pubspec.yaml
 ///
 /// flutter:
-
+///   fonts:
+///    - family:  MyFlutterApp
+///      fonts:
+///       - asset: fonts/MyFlutterApp.ttf
 ///
 /// 
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
+/// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -19,4 +30,8 @@ class MyFlutterApp {
   static const String _kFontPkg = null;
 
   static const IconData music = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData last_added = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData most_played = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shuffle = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData menu = IconData(0xf7a4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

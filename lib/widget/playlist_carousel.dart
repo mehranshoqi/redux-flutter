@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:bbloginredux/model/destination_model.dart';
 import 'package:bbloginredux/screen/destination_screen.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class DestinationCarousel extends StatelessWidget {
+class PlayListCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -11,33 +12,21 @@ class DestinationCarousel extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text(
-                'Top Destinations',
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
-                ),
-              ),
               GestureDetector(
                 onTap: () => print('See All'),
-                child: Text(
-                  'See All',
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                child:
+                    Text('PlayList', style: Theme.of(context).textTheme.title),
               ),
             ],
           ),
         ),
+        SizedBox(
+          height: 8,
+        ),
         Container(
-          height: 300.0,
+          height: 222,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
@@ -54,38 +43,59 @@ class DestinationCarousel extends StatelessWidget {
                 ),
                 child: Container(
                   margin: EdgeInsets.all(10.0),
-                  width: 210.0,
+                  width: 212.0,
                   child: Stack(
                     alignment: Alignment.topCenter,
                     children: <Widget>[
                       Positioned(
-                        bottom: 15.0,
+                        bottom: 5.0,
                         child: Container(
-                          height: 120.0,
-                          width: 200.0,
+                          height: 90,
+                          width: 208.0,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xFF222E3C),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3F0f141b),
+                                spreadRadius: 6,
+                                blurRadius: 9,
+                                offset:
+                                    Offset(0, 2), // changes position of shadow
+                              ),
+                            ],
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 14.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: <Widget>[
-                                Text(
-                                  '${destination.activities.length} activities',
-                                  style: TextStyle(
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1.2,
+                                Container(
+                                  decoration: BoxDecoration(),
+                                  height: 50,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '19 song',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Text(
-                                  destination.description,
-                                  style: TextStyle(
-                                    color: Colors.grey,
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.ac_unit,
+                                    size: 22,
                                   ),
+                                  onPressed: null,
                                 ),
                               ],
                             ),
@@ -111,7 +121,7 @@ class DestinationCarousel extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20.0),
                                 child: Image(
-                                  height: 180.0,
+                                  height: 150,
                                   width: 180.0,
                                   image: AssetImage(destination.imageUrl),
                                   fit: BoxFit.cover,
