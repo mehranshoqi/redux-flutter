@@ -13,33 +13,34 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   int _currentTab = 0;
-  List<IconData> _icons = [
-    FontAwesomeIcons.heart,
-    FontAwesomeIcons.minusCircle,
-    FontAwesomeIcons.walking,
-    FontAwesomeIcons.biking,
+  List _category = [
+    [FontAwesomeIcons.heart, 'favorite'],
+    [FontAwesomeIcons.heart, 'favorite'],
+    [FontAwesomeIcons.heart, 'favorite'],
+    [FontAwesomeIcons.heart, 'favorite'],
   ];
 
-  Widget _buildIcon(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          color: Color(0x0e63d7b4),
-          borderRadius: BorderRadius.circular(30.0),
+  Widget _buildIcon(int index, String label) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 60.0,
+          width: 60.0,
+          decoration: BoxDecoration(
+            color: Color(0x0e63d7b4),
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Icon(
+            _category[index],
+            size: 25.0,
+            color: Theme.of(context).accentColor,
+          ),
         ),
-        child: Icon(
-          _icons[index],
-          size: 25.0,
-          color: Theme.of(context).accentColor,
+        SizedBox(
+          height: 4,
         ),
-      ),
+        Text(label),
+      ],
     );
   }
 
@@ -177,13 +178,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _icons
-                        .asMap()
-                        .entries
-                        .map(
-                          (MapEntry map) => _buildIcon(map.key),
-                        )
-                        .toList(),
+                    children: <Widget>[]
+                    // _category
+                    //     .asMap()
+                    //     .entries
+                    //     .map(
+                    //       (MapEntry map) => _buildIcon(map.key),
+                    //     )
+                    //     .toList(),
                   ),
                 )
               ],
