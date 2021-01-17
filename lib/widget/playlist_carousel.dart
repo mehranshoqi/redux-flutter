@@ -11,14 +11,18 @@ class PlayListCarousel extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               GestureDetector(
                 onTap: () => print('See All'),
-                child:
-                    Text('PlayList', style: Theme.of(context).textTheme.title),
+                child: Text(
+                  'PlayList',
+                  style: Theme.of(context).textTheme.title,
+                ),
               ),
             ],
           ),
@@ -68,14 +72,13 @@ class PlayListCarousel extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 18.0,
-                              vertical: 8
-                            ),
+                                horizontal: 18.0, vertical: 8),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
