@@ -4,4 +4,5 @@ class Routes {
   static final signup = "/signup";
   static final productsView = "products";
   static final cart = "/cart";
+  static final player = "/player";
 }

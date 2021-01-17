@@ -62,7 +62,7 @@ class _AppState extends State<App> {
       store: store,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Player(),
+        home: HomeScreen(),
         theme: ThemeData(
           primaryColor: Color(0xFF6CCFF6),
           accentColor: Color(0xFF63D7B4),
@@ -88,9 +88,10 @@ class _AppState extends State<App> {
         routes: {
           Routes.home: (context) => HomeScreen(),
           Routes.login: (context) => LoginPage(),
-          // Routes.signup: (context) => SignupPage(),
+          Routes.signup: (context) => SignupPage(),
           Routes.productsView: (context) => ProductsPage(),
           Routes.cart: (context) => CartPage(),
+          Routes.player: (context) => Player(),
         },
       ),
     );
