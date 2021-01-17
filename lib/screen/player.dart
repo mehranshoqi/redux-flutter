@@ -3,7 +3,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:bbloginredux/model/music/play_status.dart';
 import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:bbloginredux/redux/app_state.dart';
-import 'package:bbloginredux/redux/music/player/player_action.dart';
+import 'package:bbloginredux/redux/player/player_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -65,7 +65,7 @@ class _PlayerState extends State<Player> {
     return StoreConnector<AppState, AppState>(
         converter: (store) => store.state,
         builder: (context, state) {
-          PlayStatus _playStatus = state.musicState.playerState.playStatus;
+          PlayStatus _playStatus = state.playerState.playStatus;
           return Scaffold(
             body: Container(
               width: double.infinity,
@@ -201,7 +201,7 @@ class _PlayerState extends State<Player> {
                                     ),
                                     iconSize: 48,
                                     onPressed: () {
-                                      if (state.musicState.playerState
+                                      if (state.playerState
                                               .playStatus ==
                                           PlayStatus.pause) {
                                         audioCache.play('m1.mp3');
@@ -212,17 +212,17 @@ class _PlayerState extends State<Player> {
                                             PlayStatus.play,
                                           ),
                                         );
-                                      } else if (state.musicState.playerState
+                                      } else if (state.playerState
                                               .playStatus ==
                                           PlayStatus.play) {
                                         advancedPlayer.pause();
                                         _playSit = MyFlutterApp.play_arrow;
-                                        StoreProvider.of<AppState>(context)
-                                            .dispatch(
-                                          ChangePlayStatusAction(
-                                            PlayStatus.pause,
-                                          ),
-                                        );
+                                        // StoreProvider.of<AppState>(context)
+                                        //     .dispatch(
+                                        //   ChangePlayStatusAction(
+                                        //     PlayStatus.pause,
+                                        //   ),
+                                        // );
                                       }
                                       // if (!_isPlay) {
                                       //   setState(() {

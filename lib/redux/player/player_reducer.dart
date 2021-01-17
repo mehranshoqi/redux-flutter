@@ -1,6 +1,5 @@
-import 'package:bbloginredux/redux/music/player/player_action.dart';
-import 'package:bbloginredux/redux/music/player/player_state.dart';
-import 'package:flutter/material.dart';
+import 'package:bbloginredux/redux/player/player_action.dart';
+import 'package:bbloginredux/redux/player/player_state.dart';
 import 'package:redux/redux.dart';
 
 final playerReducer = combineReducers<PlayerState>([

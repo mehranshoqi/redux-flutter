@@ -1,5 +1,5 @@
 import 'package:bbloginredux/redux/auth/auth_state.dart';
-import 'package:bbloginredux/redux/music/music_state.dart';
+import 'package:bbloginredux/redux/player/player_state.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/foundation.dart';
 import './login/login_state.dart';
@@ -10,26 +10,26 @@ class AppState {
   final AuthState authState;
   final LoginState loginState;
   final ProductsState productsState;
-  final MusicState musicState;
+  final PlayerState playerState;
 
   AppState({
     @required this.authState,
     @required this.loginState,
     @required this.productsState,
-    @required this.musicState,
+    @required this.playerState,
   });
 
   AppState copyWith({
     AuthState authState,
     LoginState loginState,
     ProductsState productsState,
-    MusicState musicState,
+    PlayerState musicState,
   }) {
     return AppState(
       authState: authState ?? this.authState,
       loginState: loginState ?? this.loginState,
       productsState: productsState ?? this.productsState,
-      musicState: musicState ?? this.musicState,
+      playerState: musicState ?? this.playerState,
     );
   }
 
@@ -38,7 +38,7 @@ class AppState {
       authState: AuthState.initial(),
       loginState: LoginState.initial(),
       productsState: ProductsState.initial(),
-      musicState: MusicState.initial(),
+      playerState: PlayerState.initial(),
     );
   }
 }
