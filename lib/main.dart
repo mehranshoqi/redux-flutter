@@ -63,7 +63,7 @@ class _AppState extends State<App> {
         debugShowCheckedModeBanner: false,
         home: HomeScreen(),
         theme: ThemeData(
-          primaryColor: Color(0xFF0FFF99),
+          primaryColor: Color(0xFF6CCFF6),
           accentColor: Color(0xFF63D7B4),
           backgroundColor: Color(0xFF222E3C),
           textTheme: ThemeData.light().textTheme.copyWith(

@@ -1,7 +1,7 @@
 import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:bbloginredux/model/destination_model.dart';
-import 'package:bbloginredux/screen/destination_screen.dart';
+import 'package:bbloginredux/model/playlist_model.dart';
+import 'package:bbloginredux/screen/playlist_screen.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -34,15 +34,15 @@ class PlayListCarousel extends StatelessWidget {
           height: 208,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: destinations.length,
+            itemCount: playlists.length,
             itemBuilder: (BuildContext context, int index) {
-              Destination destination = destinations[index];
+              Playlist playlist = playlists[index];
               return GestureDetector(
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => DestinationScreen(
-                      destination: destination,
+                    builder: (_) => PlaylistScreen(
+                      playlists: playlist,
                     ),
                   ),
                 ),
@@ -114,13 +114,13 @@ class PlayListCarousel extends StatelessWidget {
                         child: Stack(
                           children: <Widget>[
                             Hero(
-                              tag: destination.imageUrl,
+                              tag: playlist.imageUrl,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20.0),
                                 child: Image(
                                   height: 150,
                                   width: 180.0,
-                                  image: AssetImage(destination.imageUrl),
+                                  image: AssetImage(playlist.imageUrl),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -132,7 +132,7 @@ class PlayListCarousel extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    destination.city,
+                                    playlist.city,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 24.0,
@@ -140,22 +140,6 @@ class PlayListCarousel extends StatelessWidget {
                                       letterSpacing: 1,
                                     ),
                                   ),
-                                  // Row(
-                                  //   children: <Widget>[
-                                  //     Icon(
-                                  //       FontAwesomeIcons.locationArrow,
-                                  //       size: 10.0,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     SizedBox(width: 5.0),
-                                  //     Text(
-                                  //       destination.country,
-                                  //       style: TextStyle(
-                                  //         color: Colors.white,
-                                  //       ),
-                                  //     ),
-                                  //   ],
-                                  // ),
                                 ],
                               ),
                             ),
