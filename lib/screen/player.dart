@@ -201,21 +201,27 @@ class _PlayerState extends State<Player> {
                                     ),
                                     iconSize: 48,
                                     onPressed: () {
-                                      if (_playStatus == PlayStatus.pause) {
+                                      if (state.musicState.playerState
+                                              .playStatus ==
+                                          PlayStatus.pause) {
                                         audioCache.play('m1.mp3');
                                         _playSit = MyFlutterApp.pause;
                                         StoreProvider.of<AppState>(context)
                                             .dispatch(
                                           ChangePlayStatusAction(
-                                              playStatus: PlayStatus.play),
+                                            PlayStatus.play,
+                                          ),
                                         );
-                                      } else if(_playStatus == PlayStatus.play) {
+                                      } else if (state.musicState.playerState
+                                              .playStatus ==
+                                          PlayStatus.play) {
                                         advancedPlayer.pause();
                                         _playSit = MyFlutterApp.play_arrow;
                                         StoreProvider.of<AppState>(context)
                                             .dispatch(
                                           ChangePlayStatusAction(
-                                              playStatus: PlayStatus.pause),
+                                            PlayStatus.pause,
+                                          ),
                                         );
                                       }
                                       // if (!_isPlay) {
