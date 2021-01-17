@@ -1,3 +1,4 @@
+import 'package:bbloginredux/screen/player.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
@@ -29,7 +30,7 @@ class _AppState extends State<App> {
   void initializeFlutterFire() async {
     try {
       // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
+      // await Firebase.initializeApp();
       setState(() {
         _initialized = true;
       });
@@ -61,29 +62,33 @@ class _AppState extends State<App> {
       store: store,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: Player(),
         theme: ThemeData(
           primaryColor: Color(0xFF6CCFF6),
           accentColor: Color(0xFF63D7B4),
           backgroundColor: Color(0xFF222E3C),
           textTheme: ThemeData.light().textTheme.copyWith(
-              body1: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
+                body1: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                body2: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                ),
+                title: TextStyle(
+                    color: Color(0xFF63D7B4),
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: .7),
+                subhead: TextStyle(
+                  fontSize: 14.2,
+                  color: Color(0x9FB9E6FF),
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-              body2: TextStyle(
-                color: Color.fromRGBO(20, 51, 51, 1),
-              ),
-              title: TextStyle(color: Color(0xFF63D7B4),fontWeight: FontWeight.w900,letterSpacing: .7),
-              subhead: TextStyle(
-                fontSize: 14.2,
-                color: Color(0x9FB9E6FF),
-                fontWeight: FontWeight.w400,
-              )),
         ),
         routes: {
           Routes.home: (context) => HomeScreen(),
           Routes.login: (context) => LoginPage(),
-          Routes.signup: (context) => SignupPage(),
+          // Routes.signup: (context) => SignupPage(),
           Routes.productsView: (context) => ProductsPage(),
           Routes.cart: (context) => CartPage(),
         },
