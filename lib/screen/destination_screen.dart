@@ -44,7 +44,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 child: Hero(
                   tag: widget.destination.imageUrl,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
                     child: Image(
                       image: AssetImage(widget.destination.imageUrl),
                       fit: BoxFit.cover,
@@ -72,7 +75,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                           onPressed: () => Navigator.pop(context),
                         ),
                         IconButton(
-                          icon: Icon(FontAwesomeIcons.sortAmountDown),
+                          icon: Icon(FontAwesomeIcons.sortAmountDown,),
                           iconSize: 25.0,
                           color: Colors.black,
                           onPressed: () => Navigator.pop(context),

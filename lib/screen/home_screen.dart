@@ -56,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           body: SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(0, 28, 0, 0),
             child: Column(
               children: <Widget>[
                 Container(
@@ -151,11 +152,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         'songs',
                       ),
                       _buildIcon(
-                        MyFlutterApp.most_played,
+                        MyFlutterApp.trending_up,
                         'most played',
                       ),
                       _buildIcon(
-                        MyFlutterApp.last_added,
+                        MyFlutterApp.add_to_photos,
                         'last added',
                       ),
                       _buildIcon(
@@ -169,8 +170,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 28,
                 ),
                 PlayListCarousel(),
-                // SizedBox(height: 8,),
-                // PlayListCarousel(),
               ],
             ),
           ),

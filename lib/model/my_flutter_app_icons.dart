@@ -30,8 +30,9 @@ class MyFlutterApp {
   static const String _kFontPkg = null;
 
   static const IconData music = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData last_added = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData most_played = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData add_to_photos = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData trending_up = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData shuffle = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData menu = IconData(0xf7a4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData keyboard_arrow_right = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData grip_lines = IconData(0xf7a4, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -61,7 +61,7 @@ class _AppState extends State<App> {
       store: store,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AuthPage(),
+        home: HomeScreen(),
         theme: ThemeData(
           primaryColor: Color(0xFF0FFF99),
           accentColor: Color(0xFF63D7B4),

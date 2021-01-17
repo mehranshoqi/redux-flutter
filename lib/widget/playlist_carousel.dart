@@ -1,3 +1,4 @@
+import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:bbloginredux/model/destination_model.dart';
 import 'package:bbloginredux/screen/destination_screen.dart';
@@ -26,7 +27,7 @@ class PlayListCarousel extends StatelessWidget {
           height: 8,
         ),
         Container(
-          height: 222,
+          height: 208,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: destinations.length,
@@ -42,7 +43,7 @@ class PlayListCarousel extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.all(6.0),
                   width: 212.0,
                   child: Stack(
                     alignment: Alignment.topCenter,
@@ -53,49 +54,42 @@ class PlayListCarousel extends StatelessWidget {
                           height: 90,
                           width: 208.0,
                           decoration: BoxDecoration(
-                            color: Color(0xFF222E3C),
+                            color: Color(0x3F131a22),
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0x3F0f141b),
-                                spreadRadius: 6,
-                                blurRadius: 9,
+                                spreadRadius: 2,
+                                blurRadius: 5,
                                 offset:
-                                    Offset(0, 2), // changes position of shadow
+                                    Offset(1, 3), // changes position of shadow
                               ),
                             ],
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 14.0,
+                              horizontal: 18.0,
+                              vertical: 8
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  height: 50,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '19 song',
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      '19 song',
+                                      style: TextStyle(
+                                        color: Colors.grey.withOpacity(.8),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.ac_unit,
-                                    size: 22,
-                                  ),
-                                  onPressed: null,
+                                    ),
+                                    Icon(
+                                      MyFlutterApp.keyboard_arrow_right,
+                                      size: 22,
+                                      color: Colors.grey.withOpacity(.8),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -129,8 +123,8 @@ class PlayListCarousel extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              left: 10.0,
-                              bottom: 10.0,
+                              left: 16.0,
+                              bottom: 8,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -140,25 +134,25 @@ class PlayListCarousel extends StatelessWidget {
                                       color: Colors.white,
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.2,
+                                      letterSpacing: 1,
                                     ),
                                   ),
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(
-                                        FontAwesomeIcons.locationArrow,
-                                        size: 10.0,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(width: 5.0),
-                                      Text(
-                                        destination.country,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  // Row(
+                                  //   children: <Widget>[
+                                  //     Icon(
+                                  //       FontAwesomeIcons.locationArrow,
+                                  //       size: 10.0,
+                                  //       color: Colors.white,
+                                  //     ),
+                                  //     SizedBox(width: 5.0),
+                                  //     Text(
+                                  //       destination.country,
+                                  //       style: TextStyle(
+                                  //         color: Colors.white,
+                                  //       ),
+                                  //     ),
+                                  //   ],
+                                  // ),
                                 ],
                               ),
                             ),
