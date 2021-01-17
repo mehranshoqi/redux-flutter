@@ -42,6 +42,7 @@ class _PlayerState extends State<Player> {
 
   Widget slider() {
     return Slider(
+      activeColor: Theme.of(context).accentColor,
       value: _position.inSeconds.toDouble(),
       min: 0.0,
       max: _duration.inSeconds.toDouble(),
@@ -149,17 +150,11 @@ class _PlayerState extends State<Player> {
                   Container(
                     width: double.infinity,
                     height: 250,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 2),
-                    ),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          'SLIDER',
-                          style: TextStyle(color: Colors.red),
-                        ),
                         slider(),
                         SizedBox(
                           height: 16,
@@ -195,49 +190,33 @@ class _PlayerState extends State<Player> {
                                   ],
                                 ),
                                 child: IconButton(
-                                    icon: Icon(
-                                      _playSit,
-                                      color: Theme.of(context).backgroundColor,
-                                    ),
-                                    iconSize: 48,
-                                    onPressed: () {
-                                      if (state.playerState
-                                              .playStatus ==
-                                          PlayStatus.pause) {
-                                        audioCache.play('m1.mp3');
-                                        _playSit = MyFlutterApp.pause;
-                                        StoreProvider.of<AppState>(context)
-                                            .dispatch(
-                                          ChangePlayStatusAction(
-                                            PlayStatus.play,
-                                          ),
-                                        );
-                                      } else if (state.playerState
-                                              .playStatus ==
-                                          PlayStatus.play) {
-                                        advancedPlayer.pause();
-                                        _playSit = MyFlutterApp.play_arrow;
-                                        // StoreProvider.of<AppState>(context)
-                                        //     .dispatch(
-                                        //   ChangePlayStatusAction(
-                                        //     PlayStatus.pause,
-                                        //   ),
-                                        // );
-                                      }
-                                      // if (!_isPlay) {
-                                      //   setState(() {
-                                      //     audioCache.play('m1.mp3');
-                                      //     _playSit = MyFlutterApp.pause;
-                                      //     _isPlay = true;
-                                      //   });
-                                      // } else {
-                                      //   setState(() {
-                                      //     advancedPlayer.pause();
-                                      //     _playSit = MyFlutterApp.play_arrow;
-                                      //     _isPlay = false;
-                                      //   });
-                                      // }
-                                    }),
+                                  icon: Icon(
+                                    _playSit,
+                                    color: Theme.of(context).backgroundColor,
+                                  ),
+                                  iconSize: 48,
+                                  onPressed: () {
+                                    if (_playStatus == PlayStatus.pause) {
+                                      audioCache.play('m1.mp3');
+                                      _playSit = MyFlutterApp.pause;
+                                      StoreProvider.of<AppState>(context)
+                                          .dispatch(
+                                        ChangePlayStatusAction(
+                                          PlayStatus.play,
+                                        ),
+                                      );
+                                    } else if (_playStatus == PlayStatus.play) {
+                                      advancedPlayer.pause();
+                                      _playSit = MyFlutterApp.play_arrow;
+                                      StoreProvider.of<AppState>(context)
+                                          .dispatch(
+                                        ChangePlayStatusAction(
+                                          PlayStatus.pause,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
                               ),
                               Container(
                                 child: IconButton(
