@@ -29,9 +29,9 @@ dependencies:
   flutter_redux: ^0.5.3
   shared_preferences: ^0.4.3
   redux_logging: ^0.3.0
-  firebase_core: "0.6.0"
-  firebase_auth: "^0.19.0+1"
-  cloud_firestore: "^0.15.0"
+  # firebase_core: "0.6.0"
+  # firebase_auth: "^0.19.0+1"
+  # cloud_firestore: "^0.15.0"
   audioplayers: ^0.16.1
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,7 +64,7 @@ flutter:
     - assets/background.png
     - assets/illustration.png
     - assets/images/
-    - assets/m1.mp3
+    - assets/bahar.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

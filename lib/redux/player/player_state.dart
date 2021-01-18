@@ -4,10 +4,10 @@ import 'package:bbloginredux/model/music/song_model.dart';
 
 @immutable
 class PlayerState {
-  // final Song song;
+  final Song song;
   final PlayStatus playStatus;
   PlayerState({
-    // this.song,
+    this.song,
     this.playStatus,
   });
 
@@ -16,13 +16,18 @@ class PlayerState {
     PlayStatus playStatus,
   }) {
     return new PlayerState(
-      // song: song ?? this.song,
+      song: song ?? this.song,
       playStatus: playStatus ?? this.playStatus,
     );
   }
 
   factory PlayerState.initial() => new PlayerState(
-        // song: Song(),
+        song: Song(
+          imageUrl: 'assets/images/playlistbg1.jpg',
+          name: 'bahar',
+          path: 'm1.mp3',
+          singer: 'aref',
+        ),
         playStatus: PlayStatus.pause,
       );
 }

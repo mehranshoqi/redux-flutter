@@ -1,6 +1,8 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:bbloginredux/model/music/play_status.dart';
+import 'package:bbloginredux/model/music/player_model.dart';
+import 'package:bbloginredux/model/music/song_model.dart';
 import 'package:bbloginredux/model/my_flutter_app_icons.dart';
 import 'package:bbloginredux/redux/app_state.dart';
 import 'package:bbloginredux/redux/player/player_action.dart';
@@ -15,25 +17,21 @@ class Player extends StatefulWidget {
 class _PlayerState extends State<Player> {
   Duration _duration = new Duration();
   Duration _position = new Duration();
-  AudioPlayer advancedPlayer;
-  AudioCache audioCache;
   IconData _playSit = MyFlutterApp.play_arrow;
-  bool _isPlay = false;
+
   @override
   void initState() {
     super.initState();
+    PlayerModel().initPlayer();
     initPlayer();
   }
 
   void initPlayer() {
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-
-    advancedPlayer.durationHandler = (d) => setState(() {
+    PlayerModel().advancedPlayer.durationHandler = (d) => setState(() {
           _duration = d;
         });
 
-    advancedPlayer.positionHandler = (p) => setState(() {
+    PlayerModel().advancedPlayer.positionHandler = (p) => setState(() {
           _position = p;
         });
   }
@@ -58,7 +56,7 @@ class _PlayerState extends State<Player> {
   void seekToSecond(int second) {
     Duration newDuration = Duration(seconds: second);
 
-    advancedPlayer.seek(newDuration);
+    PlayerModel().advancedPlayer.seek(newDuration);
   }
 
   @override
@@ -67,6 +65,7 @@ class _PlayerState extends State<Player> {
         converter: (store) => store.state,
         builder: (context, state) {
           PlayStatus _playStatus = state.playerState.playStatus;
+          Song _song = state.playerState.song;
           return Scaffold(
             body: Container(
               width: double.infinity,
@@ -112,8 +111,7 @@ class _PlayerState extends State<Player> {
                                       MediaQuery.of(context).size.width - 120,
                                   width:
                                       MediaQuery.of(context).size.width - 120,
-                                  image: AssetImage(
-                                      'assets/images/playlistbg1.jpg'),
+                                  image: AssetImage(_song.imageUrl),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -122,7 +120,7 @@ class _PlayerState extends State<Player> {
                               height: 32,
                             ),
                             Text(
-                              'Blue Dream',
+                              _song.name,
                               style: TextStyle(
                                 color: Theme.of(context).accentColor,
                                 fontSize: 22,
@@ -134,7 +132,7 @@ class _PlayerState extends State<Player> {
                               height: 4,
                             ),
                             Text(
-                              'Poboon',
+                              _song.singer,
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 16,
@@ -197,7 +195,7 @@ class _PlayerState extends State<Player> {
                                   iconSize: 48,
                                   onPressed: () {
                                     if (_playStatus == PlayStatus.pause) {
-                                      audioCache.play('m1.mp3');
+                                      PlayerModel().audioCache.play(_song.path);
                                       _playSit = MyFlutterApp.pause;
                                       StoreProvider.of<AppState>(context)
                                           .dispatch(
@@ -206,7 +204,7 @@ class _PlayerState extends State<Player> {
                                         ),
                                       );
                                     } else if (_playStatus == PlayStatus.play) {
-                                      advancedPlayer.pause();
+                                      PlayerModel().advancedPlayer.pause();
                                       _playSit = MyFlutterApp.play_arrow;
                                       StoreProvider.of<AppState>(context)
                                           .dispatch(
